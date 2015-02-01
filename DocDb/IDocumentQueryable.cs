@@ -1,8 +1,11 @@
-﻿namespace DocDb
+﻿using System.Threading;
+using System.Threading.Tasks;
+
+namespace DocDb
 {
-    public interface IDocumentQueryable<out T>
+    public interface IDocumentQueryable
     {
-        T[] GetDocuments(DocumentQuery query);
-        DocumentMetadata[] GetDocumentMetadata(DocumentQuery query);
+        Task<T[]> GetAsync<T>(DocumentQuery query, CancellationToken cancellationToken);
+        Task<DocumentMetadata[]> GetMetadataAsync<T>(DocumentQuery query, CancellationToken cancellationToken);
     }
 }

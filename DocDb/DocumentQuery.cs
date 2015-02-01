@@ -2,37 +2,26 @@
 {
     public class DocumentQuery
     {
-        public int? DocumentId { get; private set; }
-        public int? UpdatedTimestamp { get; private set; }
+        public int? Id { get; private set; }
         public string Key { get; private set; }
-        public string Index1 { get; private set; }
-        public string Index2 { get; private set; }
-        public string Index3 { get; private set; }
+        public string Index { get; private set; }
+        public int? Timestamp { get; private set; }
 
         private DocumentQuery Clone()
         {
             return new DocumentQuery
             {
-                DocumentId = DocumentId,
-                UpdatedTimestamp = UpdatedTimestamp,
+                Id = Id,
                 Key = Key,
-                Index1 = Index1,
-                Index2 = Index2,
-                Index3 = Index3
+                Index = Index,
+                Timestamp = Timestamp
             };
         }
 
-        public DocumentQuery WithDocumentId(int? documentId)
+        public DocumentQuery WithDocumentId(int? id)
         {
             DocumentQuery clone = Clone();
-            clone.DocumentId = documentId;
-            return clone;
-        }
-
-        public DocumentQuery WithUpdatedTimestamp(int? updatedTimestamp)
-        {
-            DocumentQuery clone = Clone();
-            clone.UpdatedTimestamp = updatedTimestamp;
+            clone.Id = id;
             return clone;
         }
 
@@ -43,24 +32,17 @@
             return clone;
         }
 
-        public DocumentQuery WithIndex1(string index1)
+        public DocumentQuery WithIndex(string index)
         {
             DocumentQuery clone = Clone();
-            clone.Index1 = index1;
+            clone.Index = index;
             return clone;
         }
 
-        public DocumentQuery WithIndex2(string index2)
+        public DocumentQuery WithTimestamp(int? timestamp)
         {
             DocumentQuery clone = Clone();
-            clone.Index2 = index2;
-            return clone;
-        }
-
-        public DocumentQuery WithIndex3(string index3)
-        {
-            DocumentQuery clone = Clone();
-            clone.Index3 = index3;
+            clone.Timestamp = timestamp;
             return clone;
         }
     }
